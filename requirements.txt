@@ -2,3 +2,4 @@ Flask
 PyJWT
 validate_email
 Flask-Mail
+peewee
