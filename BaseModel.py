@@ -1,6 +1,6 @@
 
 from peewee import Model
-import .config
+import config
 from playhouse.db_url import connect
 
 db = connect(config.DB_URL)
