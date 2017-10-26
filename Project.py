@@ -1,5 +1,5 @@
 from peewee import CharField
-from .BaseModel import BaseModel
+from BaseModel import BaseModel
 
 class Project(BaseModel):
 

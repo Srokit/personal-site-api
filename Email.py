@@ -1,4 +1,4 @@
-from .BaseModel import BaseModel
+from BaseModel import BaseModel
 from peewee import CharField
 
 class Email(BaseModel):
