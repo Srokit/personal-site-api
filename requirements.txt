@@ -4,3 +4,4 @@ validate_email
 Flask-Mail
 peewee
 pymysql
+flask_cors

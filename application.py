@@ -4,6 +4,7 @@ import jwt
 from validate_email import validate_email
 import json
 from flask_mail import Mail
+from flask_cors import CORS
 
 import config
 from BaseModel import db
@@ -13,6 +14,7 @@ from Project import Project
 from helpers import send_update_for_project
 
 app = flask.Flask(__name__)
+CORS(app)
 app.config.from_object('config')
 mailer = Mail()
 mailer.init_app(app)
