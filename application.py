@@ -19,8 +19,6 @@ app.config.from_object('config')
 mailer = Mail()
 mailer.init_app(app)
 
-TOKEN_NAME = config.TOKEN_NAME
-
 @app.before_request
 def setup():
     db.connect()
@@ -47,6 +45,8 @@ def put_email():
 @app.route('/project', methods=['PUT'])
 def put_project():
     new_project = request.body.get('project')
+    new_project['logo_img_name'] = new_project['logoImgName']
+    del(new_project['logoImgName'])
     project = Project.create(**new_project)
 
     email_addresses = [ email.email for email in Email.select().where(True).execute() ]

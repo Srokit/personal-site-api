@@ -3,4 +3,4 @@ from peewee import CharField
 
 class Email(BaseModel):
 
-    email = CharField(max_length=50)
+    email = CharField(max_length=50, unique=True)
