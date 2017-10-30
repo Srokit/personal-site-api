@@ -5,6 +5,7 @@ from validate_email import validate_email
 import json
 from flask_mail import Mail
 from flask_cors import CORS
+import os
 
 import config
 from BaseModel import db
@@ -72,4 +73,4 @@ def get_project(proj_id):
     return jsonify({'success': True, 'project': project_as_dict})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=config.PORT)
