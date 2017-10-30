@@ -4,7 +4,7 @@ import jwt
 from validate_email import validate_email
 import json
 from flask_mail import Mail
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 
 import config
 from BaseModel import db
@@ -15,7 +15,6 @@ from helpers import send_update_for_project
 
 app = flask.Flask(__name__)
 CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
 app.config.from_object('config')
 mailer = Mail()
 mailer.init_app(app)
@@ -44,7 +43,6 @@ def put_email():
         return jsonify({'success': False, 'message': 'Invalid email'})
 
 @app.route('/project', methods=['PUT'])
-@cross_origin()
 def put_project():
     new_project = request.body.get('project')
     new_project['logo_img_name'] = new_project['logoImgName']
@@ -61,7 +59,6 @@ def put_project():
         return jsonify({'success': False})
 
 @app.route('/project/all', methods=['GET'])
-@cross_origin()
 def get_project_all():
 
     projects = Project.select().where(True).execute()
@@ -69,7 +66,6 @@ def get_project_all():
     return jsonify({'success': True, 'projects': projects_as_dicts})
 
 @app.route('/project/{proj_id}', methods=['GET'])
-@cross_origin()
 def get_project(proj_id):
 
     project_as_dict = Project.get(Project.id == proj_id).to_dict()
