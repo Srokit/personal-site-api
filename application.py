@@ -45,6 +45,11 @@ def put_email():
 
 @app.route('/project', methods=['PUT'])
 def put_project():
+
+    password = request.data.get('ADMIN_PASS')
+    if password != config.ADMIN_PASS:
+        return jsonify({'success': False, 'message': 'Prohibited'})
+
     new_project = request.body.get('project')
     new_project['logo_img_name'] = new_project['logoImgName']
     del(new_project['logoImgName'])

@@ -2,6 +2,8 @@ import os
 
 DB_URL = os.environ.get('DB_URL')
 
+ADMIN_PASS = os.environ.get('ADMIN_PASS')
+
 # Mailer server config vars
 
 MAIL_SERVER = os.environ.get('MAIL_SERVER')
